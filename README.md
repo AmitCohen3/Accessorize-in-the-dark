@@ -33,9 +33,13 @@ red
 # Pretrained models
 In order to run and evaluate the attack, you need to download the models' pretrained weights and put them in a pretrained/ folder.
 The weights can be downloaded using the following links:
+
 LightCNN - https://drive.google.com/uc?export=download&id=1SpMSwbrXcZ9h_KHbbOdpsme1_YXH0eiZ
+
 LightCNN DVG ROA - https://drive.google.com/uc?export=download&id=14JuLy8qCR-_af8kAIMssfU1bYz0TMzGz
+
 LightCNN DVG - https://drive.google.com/uc?export=download&id=1OLepRXZZjtlTPVMMrZkJKU-qPpX7N0I3
+
 ResNest - https://drive.google.com/uc?export=download&id=1HyAj2ohNVKg2R2v_X-RqlLKc4oRR987L
 
 # Reproducing
