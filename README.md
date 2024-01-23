@@ -1,4 +1,8 @@
 # Accesorize in the dark
+This repository contains a code implementation of the paper Accesorize in the dark.
+https://engineering.tau.ac.il/sites/engineering.tau.ac.il/files/media_server/Engineering/ShlomoShmeltzer/esorics23-nir-attacks.pdf
+
+# Example command
 Example command for running a targeted physical attack against DVG model with 400 steps.
 
 main.py
@@ -25,6 +29,16 @@ custom_protocols
 red
 --physical
 
+
+# Pretrained models
+In order to run and evaluate the attack, you need to download the models' pretrained weights and put them in a pretrained/ folder.
+The weights can be downloaded using the following links:
+LightCNN - https://drive.google.com/uc?export=download&id=1SpMSwbrXcZ9h_KHbbOdpsme1_YXH0eiZ
+LightCNN DVG ROA - https://drive.google.com/uc?export=download&id=14JuLy8qCR-_af8kAIMssfU1bYz0TMzGz
+LightCNN DVG - https://drive.google.com/uc?export=download&id=1OLepRXZZjtlTPVMMrZkJKU-qPpX7N0I3
+ResNest - https://drive.google.com/uc?export=download&id=1HyAj2ohNVKg2R2v_X-RqlLKc4oRR987L
+
+# Reproducing
 This attack follows the CASIA-NIR-VIS-2.0 dataset protocol. Visit <link> for mor information.
 
 To successfully reproduce a physical attack, the following steps should be taken:
@@ -47,7 +61,7 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 9. A file named vis_gallery_<X>.txt should also be present in the same protocol folder. It should contain paths to VIS images of the attacker, the target, and other subjects you want to include in the gallery.
 
-10. Execute the Attack: Run the attack with the specified command, ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the attacking eyeglasses in the plot directory.
+10. Execute the Attack: Run the attack (use example command for reference), ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the attacking eyeglasses in the plot directory.
 
 11. Physical Testing: Print, cut, and wear the attacking eyeglasses.
 
