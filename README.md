@@ -1,72 +1,85 @@
-# Accesorize in the dark
-This repository contains a code implementation of the paper Accesorize in the dark.
-https://engineering.tau.ac.il/sites/engineering.tau.ac.il/files/media_server/Engineering/ShlomoShmeltzer/esorics23-nir-attacks.pdf
+# Description
 
-# Example command
-Example command for running a targeted physical attack against DVG model with 400 steps.
+This repository contains a code implementation of the paper [Accesorize in the Dark](https://mahmoods01.github.io/files/esorics23-nir-attacks.pdf).
 
-main.py
---dataset_path
-<path to the dataset>/NIR-VIS-2.0
---targeted
---probe-size
-40
---batch-size
-40
---gallery-index
-1
---attack-type
-"eyeglass"
---num-of-steps
-400
---step-size
-1/255
---model
-DVG
---protocols
-custom_protocols
---mask-init-color
-red
---physical
+## Setup
 
+### Requirements
 
-# Pretrained models
-In order to run and evaluate the attack, you need to download the models' pretrained weights and put them in a pretrained/ folder.
-The weights can be downloaded using the following links:
+_Note the Python version we used and provide instructions for installing necessary dependencies._
 
-LightCNN - https://drive.google.com/uc?export=download&id=1SpMSwbrXcZ9h_KHbbOdpsme1_YXH0eiZ
+### Data
 
-LightCNN DVG ROA - https://drive.google.com/uc?export=download&id=14JuLy8qCR-_af8kAIMssfU1bYz0TMzGz
+_To be added. Also, need to note where the data we add to the original dataset should be placed._
 
-LightCNN DVG - https://drive.google.com/uc?export=download&id=1OLepRXZZjtlTPVMMrZkJKU-qPpX7N0I3
+### Models
 
-ResNest - https://drive.google.com/uc?export=download&id=1HyAj2ohNVKg2R2v_X-RqlLKc4oRR987L
+To run and evaluate the attack from the paper, you need to download the pretrained model weights and place tham them under the `pretrained/` directory. Links for downloading:
 
-# Reproducing
-This attack follows the CASIA-NIR-VIS-2.0 dataset protocol. Visit <link> for mor information.
+* [LightCNN](https://drive.google.com/uc?export=download&id=1SpMSwbrXcZ9h_KHbbOdpsme1_YXH0eiZ);
+
+* [LightCNN-DVG](https://drive.google.com/uc?export=download&id=1OLepRXZZjtlTPVMMrZkJKU-qPpX7N0I3);
+
+* [Adversarially trained LightCNN-DVG](https://drive.google.com/uc?export=download&id=14JuLy8qCR-_af8kAIMssfU1bYz0TMzGz);
+
+* [ResNest](https://drive.google.com/uc?export=download&id=1HyAj2ohNVKg2R2v_X-RqlLKc4oRR987L).
+
+## Instructions for Producing Physical Attacks
 
 To successfully reproduce a physical attack, the following steps should be taken:
 
-1. Capture NIR Images of the Attacker: Take around 20 Near-Infrared (NIR) images of the attacker, ensuring slight head rotations during capture. The attacker should wear eyeglasses frames with four bright points. This requirement can be bypassed by setting USE_PERSPECTIVE in consts.py to false.
+1. Capture NIR images of the attacker: Take around 20 Near-Infrared (NIR) images of the attacker, ensuring slight head rotations during capture. The attacker should wear eyeglasses frames with four bright points. (This requirement can be bypassed by setting USE_PERSPECTIVE in consts.py to false.)
 
-2. Capture a VIS Image: Take a single Visible Light (VIS) image of the attacker.
+2. Capture a VIS image: Take a single VIS image of the attacker.
 
-3. Prepare Images: Crop to 224x224 and center both the NIR and VIS images of the attacker's face.
+3. Preprocess images: Crop to 224x224 and center both the NIR and VIS images of the attacker's face.
 
-4. Add to CASIA NIR-VIS-2.0 Dataset: Integrate these images into the CASIA NIR-VIS-2.0 dataset. Ideally, place them in a distinct folder (e.g., s5), while maintaining the existing folder structure of separate NIR and VIS folders.
+4. Update the CASIA NIR-VIS-2.0 dataset: Integrate these images into the CASIA NIR-VIS-2.0 dataset. Ideally, place them in a distinct folder (e.g., `s5`), while maintaining the existing folder structure of separate NIR and VIS folders.
 
-5. Assign a Unique Label: The new subject should have a unique identifier label within the dataset. A label in the format of 4000<X> is suitable.
+5. Assign a unique label: The new subject should have a unique identifier label within the dataset. A label in the format of `4000<X>` should be suitable.
 
-6. Create a Dataset Protocol File: Formulate a new dataset protocol file named nir_probe_<X>.txt, where <X> is a chosen identifier that can be set by the --gallery-index argument. Place this file in a 'protocols' folder within the dataset.
+6. Create a dataset protocol file: Formulate a new dataset protocol file named nir_probe_<X>.txt, where <X> is a chosen identifier that can be set by the --gallery-index argument. Place this file in a 'protocols' folder within the dataset.
 
-7. The 'protocols' folder can differ from the original dataset's folder and its name can be specified using the --protocols argument.
+7. The `protocols` folder can differ from the original dataset's folder and its name can be specified using the --protocols argument.
 
 8. The protocol file nir_probe_<X>.txt should first list paths to the new NIR images of the attacker, following by a path to an image of the target. If multiple additional image paths are available, a random target will be selected.
 
 9. A file named vis_gallery_<X>.txt should also be present in the same protocol folder. It should contain paths to VIS images of the attacker, the target, and other subjects you want to include in the gallery.
 
-10. Execute the Attack: Run the attack (use example command for reference), ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the attacking eyeglasses in the plot directory.
+10. Execute the Attack: Run the attack (use the example command below for reference), ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the adversarial eyeglasses in the `plot/` directory.
 
-11. Physical Testing: Print, cut, and wear the attacking eyeglasses.
+11. Physical Testing: Print, cut, and wear the adversarial eyeglasses (see the paper for more details).
 
-12. Take images of the attacker with the attacking eyeglasses and run prediction to evaluate their effectiveness.
+12. Capture images of the attacker wearing the adversarial eyeglasses and run prediction to evaluate their effectiveness.
+
+## Example Command
+
+Example command for running a targeted physical attack against the LightCNN-DVG model with 400 steps.
+
+```
+python main.py \
+  --dataset_path <path to the dataset>/NIR-VIS-2.0 \
+  --targeted \
+  --probe-size 40 \
+  --batch-size 40 \
+  --gallery-index 1 \
+  --attack-type "eyeglass" \
+  --num-of-steps 400 \
+  --step-size 1/255 \
+  --model DVG \
+  --protocols custom_protocols \
+  --mask-init-color red \
+  --physical
+```
+
+## Citation
+
+If you use this code, please cite our paper:
+```
+@inproceedings{Cohen23NIR,
+  title={Accessorize in the Dark: A Security Analysis of Near-Infrared Face Recognition},
+  author={Amit Cohen and Mahmood Sharif},
+  booktitle={Proceedings of the 28th European Symposium on Research in Computer Security (ESORICS)},
+  year={2023}
+}
+```
