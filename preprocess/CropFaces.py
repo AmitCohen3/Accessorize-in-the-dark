@@ -2,19 +2,11 @@ import os
 from CropFaceAndAlign import CropFace
 from PIL import Image
 
-db_path = "C:\\Users\\amitc\\Downloads\\NIR-VIS-2.0"
+db_path = "<PATH TO NIR-VIS-2.0 DATASET>"
 subfolders = ["s1", "s2", "s3", "s4"]
 nir_vis_eyes_files = ["vis_eyes.txt", "nir_eyes.txt"]
 for subfolder in subfolders:
 	subfolder_full_path = db_path + "\\" + subfolder
-	# employees = []
-	# for r, d, f in os.walk(db_path + "/" + subfolder): # r=root, d=directories, f = files
-	#	for file in f:
-	#		if (('.jpg' in file or '.bmp' in file) and "128x128" not in r):
-	#			exact_path = r + "/" + file
-	#			employees.append(exact_path)
-
-	# print("Aligning and cropping " + len(employees) + " images")
 	for eyes_file in nir_vis_eyes_files:
 		eyes_file_full_name = subfolder + "_" + eyes_file
 		with open(subfolder_full_path + "\\" + eyes_file_full_name, 'r') as read_obj:
