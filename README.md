@@ -6,7 +6,7 @@ This repository contains a code implementation of the paper [Accesorize in the D
 
 ### Requirements
 
-_Note the Python version we used and provide instructions for installing necessary dependencies._
+The python version used for this project is python 3.7. A requierments file is provided in order to install dependencies.
 
 ### Data
 
@@ -36,15 +36,15 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 4. Update the CASIA NIR-VIS-2.0 dataset: Integrate these images into the CASIA NIR-VIS-2.0 dataset. Ideally, place them in a distinct folder (e.g., `s5`), while maintaining the existing folder structure of separate NIR and VIS folders.
 
-5. Assign a unique label: The new subject should have a unique identifier label within the dataset. A label in the format of `4000<X>` should be suitable.
+5. Assign a unique label: The new subject should have a unique identifier label within the dataset. A label in the format of `4000X` should be suitable where X is any number.
 
-6. Create a dataset protocol file: Formulate a new dataset protocol file named nir_probe_<X>.txt, where <X> is a chosen identifier that can be set by the --gallery-index argument. Place this file in a 'protocols' folder within the dataset.
+6. Following the dataset's protocol, create a dataset protocol file: Formulate a new dataset protocol file named nir_probe_<X>.txt, where <X> is a chosen identifier that can be set by the --gallery-index argument. Place this file in the 'protocols' folder within the dataset.
 
 7. The `protocols` folder can differ from the original dataset's folder and its name can be specified using the --protocols argument.
 
-8. The protocol file nir_probe_<X>.txt should first list paths to the new NIR images of the attacker, following by a path to an image of the target. If multiple additional image paths are available, a random target will be selected.
+8. The protocol file nir_probe_X.txt (where X is a chosen identifier) should first list paths to the new NIR images of the attacker, following by a path to an image of the target. If multiple additional image paths are available, a random target will be selected.
 
-9. A file named vis_gallery_<X>.txt should also be present in the same protocol folder. It should contain paths to VIS images of the attacker, the target, and other subjects you want to include in the gallery.
+9. A file named vis_gallery_X.txt (where X is a chosen identifier) should also be present in the same protocol folder. It should contain paths to VIS images of the attacker, the target, and other subjects you want to include in the gallery.
 
 10. Execute the Attack: Run the attack (use the example command below for reference), ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the adversarial eyeglasses in the `plot/` directory.
 
