@@ -30,7 +30,7 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 1. Capture NIR images of the attacker: Take around 20 Near-Infrared (NIR) images of the attacker, ensuring slight head rotations during capture. The attacker should wear eyeglasses frames with four bright points. (This requirement can be bypassed by setting USE_PERSPECTIVE in consts.py to false.)
 
-2. Capture a VIS image: Take a single VIS image of the attacker.
+2. Capture a VIS image: Take a single VIS image of the attacker. This is needed to add the subject to the dataset's gallery.
 
 3. Preprocess images: Crop to 224x224 and center both the NIR and VIS images of the attacker's face. It can be done using CropFaces.py in the preprocess folder.
 
@@ -52,7 +52,7 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 12. Capture images of the attacker wearing the adversarial eyeglasses and run prediction to evaluate their effectiveness.
 
-## Example Command
+## Example Commands
 
 Example command for running a targeted physical attack against the LightCNN-DVG model with 400 steps.
 
@@ -70,6 +70,24 @@ python main.py \
   --protocols custom_protocols \
   --mask-init-color red \
   --physical
+```
+
+Example command for running an untargeted digital attack against the LightCNN model with 400 steps.
+
+```
+python main.py \
+  --dataset_path <path to the dataset>/NIR-VIS-2.0 \
+  --untargeted \
+  --probe-size 40 \
+  --batch-size 40 \
+  --gallery-index 1 \
+  --attack-type "eyeglass" \
+  --num-of-steps 400 \
+  --step-size 1/255 \
+  --model LightCNN \
+  --protocols custom_protocols \
+  --mask-init-color red \
+  --non-physical
 ```
 
 ## Citation
