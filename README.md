@@ -46,7 +46,7 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 9. A file named vis_gallery_X.txt (where X is a chosen identifier) should also be present in the same protocol folder. It should contain paths to VIS images of the attacker, the target, and other subjects you want to include in the gallery.
 
-10. Execute the Attack: Run the attack (use the example command below for reference), ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the adversarial eyeglasses in the `plot/` directory.
+10. Execute the Attack: Run the attack (use the example command below for reference), ensuring the --protocols and --gallery-index arguments are correctly set. This process will generate the adversarial eyeglasses in the `plot/` directory that will be created automatically.
 
 11. Physical Testing: Print, cut, and wear the adversarial eyeglasses (see the paper for more details).
 
