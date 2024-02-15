@@ -19,7 +19,7 @@ def vector_wise_cosine_similarity(a, b):
     scores = torch.bmm(a_norm.unsqueeze(1), b_norm.unsqueeze(2))
     return scores
 
-def cosine_similarity_loss(features, true_label_features, target_features, is_targeted, gallery_features=None, true_label_indices=None, reduce=True):
+def cosine_similarity_loss(features, true_label_features, target_features, is_targeted, gallery_features=None, true_label_indices=None):
     """
     Calculates either targeted or non-targeted cosine similarity loss based on the is_targeted flag.
 
@@ -30,7 +30,6 @@ def cosine_similarity_loss(features, true_label_features, target_features, is_ta
         is_targeted: Flag indicating if the loss is targeted.
         gallery_features: The features of all possible labels (gallery).
         true_label_indices: Indices of the true labels in the gallery.
-        reduce: If True, returns the mean loss; otherwise, returns the loss for each sample.
 
     Returns:
         The calculated cosine similarity loss.
@@ -38,7 +37,7 @@ def cosine_similarity_loss(features, true_label_features, target_features, is_ta
     if is_targeted:
         return targeted_cosine_similarity_loss(features, gallery_features, target_features, true_label_features)
     else:
-        return untargeted_cosine_similarity_loss(features, gallery_features, true_label_features, true_label_indices, reduce)
+        return untargeted_cosine_similarity_loss(features, gallery_features, true_label_features, true_label_indices)
 
 def non_printability_score(adv_patches, mask):
     """
