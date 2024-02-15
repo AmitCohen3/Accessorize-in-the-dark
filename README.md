@@ -32,7 +32,7 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 2. Capture a VIS image: Take a single VIS image of the attacker.
 
-3. Preprocess images: Crop to 224x224 and center both the NIR and VIS images of the attacker's face.
+3. Preprocess images: Crop to 224x224 and center both the NIR and VIS images of the attacker's face. It can be done using CropFaces.py in the preprocess folder.
 
 4. Update the CASIA NIR-VIS-2.0 dataset: Integrate these images into the CASIA NIR-VIS-2.0 dataset. Ideally, place them in a distinct folder (e.g., `s5`), while maintaining the existing folder structure of separate NIR and VIS folders.
 
