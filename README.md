@@ -12,6 +12,7 @@ The python version used for this project is python 3.7. A requierments file is p
 
 To obtain the CASIA NIR-VIS 2.0 dataset, please visit [this link](http://www.cbsr.ia.ac.cn/english/NIR-VIS-2.0-Database.html) and follow the provided download instructions. Our experiments adhere strictly to the dataset's established protocols. The dataset is organized in a hierarchical structure as follows:
 
+```bash
 CASIA NIR-VIS-2.0
 ├── s1
 │   ├── NIR
@@ -32,6 +33,7 @@ CASIA NIR-VIS-2.0
     ├── vis_gallery_1.txt
     ├── vis_gallery_2.txt
     └── ...
+```
 
 For adding new subjects, images should be placed in a newly created folder named 's5', maintaining the same structural format as outlined above.
 
