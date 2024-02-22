@@ -62,6 +62,7 @@ def perform_attack(args, model, gallery_file_path, probe_file_path):
 
         with torch.no_grad():
             probe_features = utils.feature_extract(args, images, model)
+
         succ_recognitions_before_attack = utils.count_succ_recognitions(gallery_features, probe_features, gallery_names, true_labels)
 
         # Preparing for the attack
