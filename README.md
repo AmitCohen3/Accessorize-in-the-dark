@@ -75,7 +75,7 @@ To successfully reproduce a physical attack, the following steps should be taken
 
 11. Physical Testing: Print, cut, and wear the adversarial eyeglasses (see the paper for more details).
 
-12. Capture images of the attacker wearing the adversarial eyeglasses and run prediction to evaluate their effectiveness.
+12. Capture images of the attacker wearing the adversarial eyeglasses and run prediction to evaluate their effectiveness. Prediction can be executed by setting the --predict parameter to True.
 
 ## Example Commands
 
