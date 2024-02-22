@@ -58,6 +58,8 @@ class Parser:
         parser.add_argument('--protocols_folder_name', default='protocols', type=str, metavar='PATH',
                             help='list of protocols (default: none).')
 
+        parser.add_argument('--predict', default=False, type=bool)
+
         self.args = parser.parse_args()
 
     def get_args(self):
