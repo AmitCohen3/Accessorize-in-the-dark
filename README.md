@@ -6,11 +6,11 @@ This repository contains a code implementation of the paper [Accesorize in the D
 
 ### Requirements
 
-The python version used for this project is python 3.7. A requierments file is provided in order to install dependencies.
+We ran the code in this project in Python 3.7. A requierments file is provided to install necessary dependencies (e.g., via `pip install -r requirements.txt`).
 
 ### Data
 
-To obtain the CASIA NIR-VIS 2.0 dataset, please visit [this link](http://www.cbsr.ia.ac.cn/english/NIR-VIS-2.0-Database.html) and follow the provided download instructions. Our experiments adhere strictly to the dataset's established protocols. The dataset is organized in a hierarchical structure as follows:
+To obtain the CASIA NIR-VIS 2.0 dataset, please visit [this link](http://www.cbsr.ia.ac.cn/english/NIR-VIS-2.0-Database.html) and follow the download instructions. Our experiments adhere strictly to the dataset's established protocols. The dataset is organized in a hierarchical structure as follows:
 
 ```bash
 CASIA NIR-VIS-2.0
@@ -35,7 +35,7 @@ CASIA NIR-VIS-2.0
     └── ...
 ```
 
-For adding new subjects, images should be placed in a newly created folder named 's5', maintaining the same structural format as outlined above.
+To add new subjects, images should be placed in a newly created folder named 's5/', maintaining the same structural format as outlined above.
 
 ### Models
 
