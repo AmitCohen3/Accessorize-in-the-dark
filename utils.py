@@ -129,6 +129,11 @@ def prepare_data_paths(dataset_path, protocols_path, protocol_index):
     return gallery_file_path, probe_file_path
 
 
+def predict(gallery_features, probe_feature):
+    score = CosineSimilarity(gallery_features, probe_feature)
+    maxIndex = torch.argmax(score, axis=0)
+    return maxIndex
+
 
 def square_detection(img):
     """
